@@ -1,11 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background">
+    <com.youth.banner.Banner
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:id="@+id/banner"
+        app:banner_radius="15dp"
+        android:layout_margin="10dp"
+        app:banner_auto_loop="true"
+        app:banner_loop_time="3500"
+        android:scrollIndicators="bottom"
+        app:banner_indicator_margin="5dp"
+        app:banner_indicator_normal_color="@color/white"
+        app:banner_indicator_selected_color="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="res"/>
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/one" />
+            <Button
+                android:id="@+id/button_1"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:text="古籍之库"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="200dp">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
+                android:src="@drawable/two"></ImageView>
+            <Button
+                android:id="@+id/button_2"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="历代经典"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/three">
+            </ImageView>
+            <Button
+                android:id="@+id/button_3"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:text="非遗文化"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="200dp">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/four">
+            </ImageView>
+
+            <Button
+                android:id="@+id/button_4"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:text="神话传奇" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>
+
+
