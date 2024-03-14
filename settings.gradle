@@ -1,0 +1,29 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/public" }
+    }
+}
+rootProject.name = "NiHaoChina"
+include ':app'
+include ':moduleCore:home'
+include ':moduleCore:resourcelib'
+include ':moduleCore:shortvideo'
+include ':moduleCore:store'
+include ':moduleCore:mine'
+include ':modulePublic:shoppingtrolley'
+include ':moduleBase:libBase'
+include ':modulePublic:showwebview'
+include ':modulePublic:tool'
+include ':modulePublic:login'
+include ':modulePublic:introductionpage'

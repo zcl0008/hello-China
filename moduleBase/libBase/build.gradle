@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.library'
+}
+
+def androidId = rootProject.ext.androidId
+def appId = rootProject.ext.appId
+def support = rootProject.ext.dependencies
+
+
+android {
+    namespace 'com.example.module.libbase'
+    compileSdk androidId.compileSdk
+
+    defaultConfig {
+        minSdk androidId.minSdk
+        targetSdk androidId.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    api support.appcompat
+    api support.material
+    api support.constraintlayout
+//    api support.GSYVideoPlayer
+//    api support.AliPlayer
+    api support.dkplayer1
+    api support.dkplayer2
+    api support.dkplayer3
+    api support.dkplayer4
+    api support.dkplayer5
+    api support.dkplayer6
+    api support.dkplayer7
+    api libARouter
+    api support.appIntro
+    api support.glide
+    api support.bumptech
+    api support.okhttp
+    api support.gson
+
+    annotationProcessor libARouterCompiler
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}

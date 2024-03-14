@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NiHaoChina">
+        <activity
+            android:name=".Activity.SetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PersonalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CollegeActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

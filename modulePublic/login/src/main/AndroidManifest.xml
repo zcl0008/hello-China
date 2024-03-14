@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cover"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/cover"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NiHaoChina">
+        <activity
+            android:name="com.example.login.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.login.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.login.ForgetPasswordVerifyActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.login.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.login.LoginActivity"
+            android:exported="true"></activity>
+    </application>
+
+</manifest>

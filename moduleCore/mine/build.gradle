@@ -1,0 +1,64 @@
+if (isRelease){
+    apply plugin : 'com.android.library'
+}else {
+    apply plugin : 'com.android.application'
+}
+def androidId = rootProject.ext.androidId
+def appId = rootProject.ext.appId
+
+android {
+    namespace 'com.example.module.mine'
+    compileSdk androidId.compileSdk
+
+    defaultConfig {
+        if(!isRelease){
+            applicationId appId.mine
+        }
+        minSdk androidId.minSdk
+        targetSdk androidId.targetSdk
+        versionCode androidId.versionCode
+        versionName androidId.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                // 当前模块名作为参数
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets{
+        main{
+            if(isRelease){
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation project(":moduleBase:libBase")
+    annotationProcessor libARouterCompiler
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
