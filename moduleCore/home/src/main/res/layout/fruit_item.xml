@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    android:layout_margin="5dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:id="@+id/fruit_image"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/fruit_name"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+             android:textSize="18sp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        />
+    </RelativeLayout>
+</LinearLayout>
