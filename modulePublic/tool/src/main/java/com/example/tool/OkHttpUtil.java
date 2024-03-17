@@ -16,6 +16,8 @@ public class OkHttpUtil {
                 .build();
         client.newCall(request).enqueue(callback);
     }
+
+
     public static void sendPostLoginRequest(String url, String phone,String password, okhttp3.Callback callback) {
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = new FormBody.Builder()
@@ -81,6 +83,33 @@ public class OkHttpUtil {
                 .add("phone",phone)
                 .add("oldPassword",oldPassword)
                 .add("newPassword",newPassword)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void  sendPostLoginByCodeRequest(String url, String email,okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = new FormBody.Builder()
+                .add("email",email)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void sendPostCodeRequest(String url,String email, okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = new FormBody.Builder()
+                .add("email",email)
                 .build();
 
         Request request = new Request.Builder()
