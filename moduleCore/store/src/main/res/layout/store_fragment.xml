@@ -83,6 +83,7 @@
                         android:id="@+id/gugong_pic"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
                         android:src="@drawable/gu" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -125,7 +126,9 @@
                     </LinearLayout>
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="280dp"
+                        android:layout_height="480dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="15dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:id="@+id/cha_pic"
@@ -174,6 +177,8 @@
                         android:layout_height="450dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:id="@+id/gua_pic"
                         android:src="@drawable/guaguo" />
                 </LinearLayout>
@@ -206,7 +211,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="佳酿醇香"
-                            android:textColor="@color/black"
+                            android:textColor="#DACAA8"
                             android:textSize="30dp"
                             android:gravity="center"/>
                         <LinearLayout
@@ -217,10 +222,12 @@
                             android:background="@drawable/jiutan"/>
                     </LinearLayout>
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="410dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="450dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
                         android:id="@+id/jiu_pic"
                         android:src="@drawable/jiu" />
                 </LinearLayout>

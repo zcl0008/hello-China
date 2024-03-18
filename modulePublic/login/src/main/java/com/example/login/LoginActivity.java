@@ -173,6 +173,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             ARouter.getInstance()
                     .build("/login/LoginByCodeActivity")
                     .navigation();
+            Log.d("LonginBy", "onClick: LoginActivity");
         }
         if (view.getId() == R.id.login){
             Log.d("LoginActivity", "onClick: ");

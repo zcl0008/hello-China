@@ -18,12 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Route(path = "/introductionpage/IntroPageActivity")
-public class IntroPageActivity extends AppCompatActivity {
+public class IntroPageActivity extends AppCompatActivity implements View.OnClickListener{
     private ViewPager viewPager;
     private List<View> viewList;
     private IntroAdapter adapter;
     private Button intro_enter;
     private Button intro_login;
+    private Button button1;
+    private Button button2;
+    private Button button3;
     private SharedPreferences sp;
 
     @Override
@@ -50,9 +53,6 @@ public class IntroPageActivity extends AppCompatActivity {
         viewList.add(getView(R.layout.intro2));
         viewList.add(getView(R.layout.intro3));
         viewList.add(getView(R.layout.intro4));
-        viewList.add(getView(R.layout.intro5));
-        viewList.add(getView(R.layout.intro6));
-        viewList.add(getView(R.layout.intro7));
 
         adapter = new IntroAdapter(viewList);
         viewPager.setAdapter(adapter);
@@ -68,25 +68,17 @@ public class IntroPageActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("first",false);
         editor.apply();
-        intro_enter = (Button) viewList.get(6).findViewById(R.id.intro_enter);
-        intro_enter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ARouter.getInstance()
-                        .build("/app/MainActivity")
-                        .navigation();
-                Log.d("intro", "onClick: ");
-                finish();
-            }
-        });
+        intro_enter = (Button) viewList.get(3).findViewById(R.id.intro_enter);
+        intro_login = (Button) viewList.get(3).findViewById(R.id.intro_login);
+        button1 = (Button) viewList.get(0).findViewById(R.id.next1);
+        button2 = (Button) viewList.get(1).findViewById(R.id.next2);
+        button3 = (Button) viewList.get(2).findViewById(R.id.next3);
 
-        intro_login = (Button) viewList.get(6).findViewById(R.id.intro_login);
-        intro_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        intro_login.setOnClickListener(this);
+        intro_enter.setOnClickListener(this);
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
     }
 
     @Override
@@ -105,5 +97,32 @@ public class IntroPageActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("Intro", "onDestroy: ");
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.intro_login){
+            ARouter.getInstance()
+                    .build("/login/LoginActivity")
+                    .navigation();
+            Log.d("intro", "onClick: ");
+            finish();
+        }
+        if (view.getId() == R.id.intro_enter){
+            ARouter.getInstance()
+                    .build("/app/MainActivity")
+                    .navigation();
+            Log.d("intro", "onClick: ");
+            finish();
+        }
+        if (view.getId() == R.id.next1){
+            viewPager.setCurrentItem(1);
+        }
+        if (view.getId() == R.id.next2){
+            viewPager.setCurrentItem(2);
+        }
+        if (view.getId() == R.id.next3){
+            viewPager.setCurrentItem(3);
+        }
     }
 }

@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sp = getSharedPreferences("",MODE_PRIVATE);
+        //sp = getSharedPreferences("",MODE_PRIVATE);
 
         setContentView(R.layout.activity_main);
 

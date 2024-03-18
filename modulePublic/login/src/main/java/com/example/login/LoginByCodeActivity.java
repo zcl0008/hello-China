@@ -52,6 +52,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_by_code);
         initWidget();
+        Log.d("LonginBy", "onCreate");
     }
     private Handler handler = new Handler(Looper.getMainLooper()){
         @Override
@@ -65,7 +66,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
         email = (EditText) findViewById(R.id.email);
         code = (EditText) findViewById(R.id.security_code);
         email_format = (TextView) findViewById(R.id.email_format);
-        email_code_format = (TextView) findViewById(R.id.security_code);
+        email_code_format = (TextView) findViewById(R.id.email_code_format);
         get_code = (TextView) findViewById(R.id.get_security_code);
         login = (Button) findViewById(R.id.login);
 
@@ -85,6 +86,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
         editor.putString("email", user.getEmail());
         editor.putString("photoUrl",user.getPhotoUrl());
         editor.apply();
+
         ARouter.getInstance()
                 .build("/app/MainActivity")
                 .navigation();
@@ -136,6 +138,12 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
                     JSONObject jsonObject = new JSONObject(respondDate);
                     if (jsonObject.getInt("code") == 0){
                         returnCode = jsonObject.getString("returnCode");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                get_code.setText("已成功发送");
+                            }
+                        });
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -150,10 +158,14 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
             GetCode();
         }
         if (view.getId() == R.id.login){
-            if (returnCode.equals(code.getText().toString())){
-                email_code_format.setVisibility(View.VISIBLE);
-            }else {
-                sendLoginRequire(this,Server_IP + Server_Login,email.getText().toString());
+            if (email.getText().toString().trim().equals("") || code.getText().toString().trim().equals("")){
+
+            }else{
+                if (returnCode.equals(code.getText().toString())){
+                    email_code_format.setVisibility(View.VISIBLE);
+                }else {
+                    sendLoginRequire(this,Server_IP + Server_Login,email.getText().toString());
+                }
             }
         }
     }

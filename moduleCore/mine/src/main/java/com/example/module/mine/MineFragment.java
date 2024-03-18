@@ -125,7 +125,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onResume() {
         super.onResume();
-        isLogin = sp.getBoolean("isLogin",false);
-        Log.d("Mine", "onResume: ");
+//        isLogin = sp.getBoolean("isLogin",false);
+//        Log.d("Mine", "onResume: ");
     }
 }
