@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.arch.core.executor.TaskExecutor;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -26,8 +29,10 @@ import com.example.module.mine.Activity.SetActivity;
 @Route(path = "/moduleCore/MineFragment")
 public class MineFragment extends Fragment implements View.OnClickListener{
     View view;
-    Button register;
-    Button change;
+//    Button register;
+//    Button change;
+    TextView name;
+    CardView profile_photo;
     LinearLayout college;
     LinearLayout message;
     LinearLayout personal;
@@ -43,16 +48,20 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     }
 
     public void initWidget(){
-        register = view.findViewById(R.id.register);
-        change = view.findViewById(R.id.changePassword);
+//        register = view.findViewById(R.id.register);
+//        change = view.findViewById(R.id.changePassword);
+        name = view.findViewById(R.id.name);
+        profile_photo = view.findViewById(R.id.profile_photo);
 
         college = view.findViewById(R.id.college);
         message = view.findViewById(R.id.message);
         personal = view.findViewById(R.id.personal);
         set = view.findViewById(R.id.set);
 
-        register.setOnClickListener(this);
-        change.setOnClickListener(this);
+//        register.setOnClickListener(this);
+//        change.setOnClickListener(this);
+        name.setOnClickListener(this);
+        profile_photo.setOnClickListener(this);
 
         college.setOnClickListener(this);
         message.setOnClickListener(this);
@@ -66,7 +75,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.register){
+        if (view.getId() == R.id.name){
             ARouter.getInstance()
                     .build("/login/LoginActivity")
                     .navigation();
