@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NiHaoChina">
         <activity
+            android:name="com.example.login.LoginByCodeActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.login.ChangePasswordActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.login.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

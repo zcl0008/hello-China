@@ -53,6 +53,7 @@ public class EnterPageActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.enter_skip){
+            countDownTimer.cancel();
             ARouter.getInstance()
                     .build("/app/MainActivity")
                     .withTransition(R.transition.explode,R.transition.fade)

@@ -5,14 +5,16 @@ public class User {
     private String email;
     private String password;
     private String phone;
+    private String photoUrl;
 
     private String token;
 
-    public User(String name, String email, String password, String phone,String token) {
+    public User(String name, String email, String password, String phone, String photoUrl, String token) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
+        this.photoUrl = photoUrl;
         this.token = token;
     }
 
@@ -50,6 +52,15 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
     public String getToken() {
         return token;
     }

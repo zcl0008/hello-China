@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button login;
     private TextView register;
     private TextView find_password;
+    private TextView login_by_code;
     private ImageView eye;
     private EditText account;
     private EditText password;
@@ -61,17 +62,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initWidget();
 
     }
-private Handler handler = new Handler(Looper.getMainLooper()){
-    @Override
-    public void handleMessage(@NonNull Message msg) {
-        Login();
-        finish();
-    }
-};
+    private Handler handler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            Login();
+            finish();
+        }
+    };
+
     public void initWidget(){
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
         find_password = findViewById(R.id.find_password);
+        login_by_code = findViewById(R.id.login_by_code);
         eye = findViewById(R.id.eye);
         account = findViewById(R.id.account);
         password = findViewById(R.id.password);
@@ -80,6 +83,7 @@ private Handler handler = new Handler(Looper.getMainLooper()){
         login.setOnClickListener(this);
         register.setOnClickListener(this);
         find_password.setOnClickListener(this);
+        login_by_code.setOnClickListener(this);
         eye.setOnClickListener(this);
         account.setOnClickListener(this);
         password.setOnClickListener(this);
@@ -100,6 +104,7 @@ private Handler handler = new Handler(Looper.getMainLooper()){
         editor.putString("name", user.getName());
         editor.putString("phone", user.getPhone());
         editor.putString("email", user.getEmail());
+        editor.putString("photoUrl",user.getPhotoUrl());
         editor.apply();
         ARouter.getInstance()
                 .build("/app/MainActivity")
@@ -121,6 +126,7 @@ private Handler handler = new Handler(Looper.getMainLooper()){
                                 user.setName(object.getString("name"));
                                 user.setPhone(object.getString("phone"));
                                 user.setEmail(object.getString("email"));
+                                user.setPhotoUrl(object.getString("photoUrl"));
                                 Log.d("LoginActivity", "onResponse: yes");
                                 handler.sendEmptyMessage(1);
                             }
@@ -162,6 +168,12 @@ private Handler handler = new Handler(Looper.getMainLooper()){
             ARouter.getInstance()
                     .build("/login/ForgetPasswordActivity")
                     .navigation();
+        }
+        if (view.getId() == R.id.login_by_code){
+            ARouter.getInstance()
+                    .build("/login/LoginByCodeActivity")
+                    .navigation();
+            Log.d("LonginBy", "onClick: LoginActivity");
         }
         if (view.getId() == R.id.login){
             Log.d("LoginActivity", "onClick: ");
