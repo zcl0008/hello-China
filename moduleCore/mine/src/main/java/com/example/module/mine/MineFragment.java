@@ -76,14 +76,22 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.name){
-            ARouter.getInstance()
-                    .build("/login/LoginActivity")
-                    .navigation();
+            if (isLogin){
+
+            }else {
+                ARouter.getInstance()
+                        .build("/login/LoginActivity")
+                        .navigation();
+            }
         }
-        if (view.getId() == R.id.changePassword){
-            ARouter.getInstance()
-                    .build("/login/ChangePasswordActivity")
-                    .navigation();
+        if (view.getId() == R.id.profile_photo){
+            if (isLogin){
+
+            }else {
+                ARouter.getInstance()
+                        .build("/login/LoginActivity")
+                        .navigation();
+            }
         }
         if (view.getId() == R.id.college){
             if (isLogin){
