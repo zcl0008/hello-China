@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
 import com.example.module.shortvideo.R;
-import com.example.module.shortvideo.ShortVideoFragment;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.List;
@@ -104,9 +103,11 @@ public class IJKVideoPlayerAdapter extends RecyclerView.Adapter<IJKVideoPlayerAd
                 if (holder.collect_isCheck){
                     holder.collect_isCheck = false;
                     holder.collect.setImageResource(R.drawable.dis_collect);
+//                    holder.collect.setColorFilter(Color.WHITE);
                 }else {
                     holder.collect_isCheck = true;
-                    holder.collect.setImageResource(R.drawable.collect);
+                    holder.collect.setImageResource(R.drawable._collect);
+//                    holder.collect.setColorFilter(Color.YELLOW);
                 }
             }
         });

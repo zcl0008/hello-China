@@ -3,12 +3,14 @@ package com.example.module.mine;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +29,13 @@ import com.example.module.mine.Activity.PersonalActivity;
 import com.example.module.mine.Activity.SetActivity;
 
 @Route(path = "/moduleCore/MineFragment")
-public class MineFragment extends Fragment implements View.OnClickListener{
+public class MineFragment extends Fragment implements View.OnClickListener,ChangeProfilePhotoListener{
     View view;
+    ChangeProfilePhotoFragment fragment;
 //    Button register;
 //    Button change;
     TextView name;
-    CardView profile_photo;
+    ImageView profile_photo;
     LinearLayout college;
     LinearLayout message;
     LinearLayout personal;
@@ -50,6 +53,8 @@ public class MineFragment extends Fragment implements View.OnClickListener{
     public void initWidget(){
 //        register = view.findViewById(R.id.register);
 //        change = view.findViewById(R.id.changePassword);
+        fragment = new ChangeProfilePhotoFragment(this);
+
         name = view.findViewById(R.id.name);
         profile_photo = view.findViewById(R.id.profile_photo);
 
@@ -86,7 +91,7 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         }
         if (view.getId() == R.id.profile_photo){
             if (isLogin){
-
+                fragment.show(getChildFragmentManager(),"fragment");
             }else {
                 ARouter.getInstance()
                         .build("/login/LoginActivity")
@@ -144,5 +149,10 @@ public class MineFragment extends Fragment implements View.OnClickListener{
         super.onResume();
 //        isLogin = sp.getBoolean("isLogin",false);
 //        Log.d("Mine", "onResume: ");
+    }
+
+    @Override
+    public void changeProfilePhoto(Bitmap bitmap) {
+        profile_photo.setImageBitmap(bitmap);
     }
 }
