@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.PlayerConfig;
+import com.example.module.shortvideo.CommentFragment;
 import com.example.module.shortvideo.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -46,6 +48,8 @@ public class IJKVideoPlayerAdapter extends RecyclerView.Adapter<IJKVideoPlayerAd
         public View buttonSheetView;
         public boolean like_isCheck = false;
         public boolean collect_isCheck = false;
+
+        public CommentFragment fragment;
         public ViewHolder(@NonNull View view) {
             super(view);
             ijkVideoView = view.findViewById(R.id.ijkVideoPlayer);
@@ -56,6 +60,7 @@ public class IJKVideoPlayerAdapter extends RecyclerView.Adapter<IJKVideoPlayerAd
             dialog = new BottomSheetDialog(context);
             buttonSheetView = LayoutInflater.from(context).inflate(R.layout.bottomdialog,null);
             dialog.setContentView(buttonSheetView);
+            fragment = new CommentFragment();
         }
     }
 
@@ -93,7 +98,8 @@ public class IJKVideoPlayerAdapter extends RecyclerView.Adapter<IJKVideoPlayerAd
         holder.comment.setOnClickListener(new View.OnClickListener() {//评论
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"该功能正在开发中，敬请期待吧！",Toast.LENGTH_LONG).show();
+                //Toast.makeText(context,"该功能正在开发中，敬请期待吧！",Toast.LENGTH_LONG).show();
+                holder.fragment.show(((AppCompatActivity)context).getSupportFragmentManager(),"fragment");
             }
         });
 

@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private String Server_IP = "http://192.168.0.83:8080/";
     private String Server_Register = "user/createUser";
+    private String Server_Login_byCode = "/user/code";
     private User user;
     private boolean isHide_eye;
     private boolean isHide_confirm_eye;
@@ -207,7 +208,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         Log.d("dfgdfgdfgdfgdfgdfgdfgdf", "onResponse: " + respondData);
                         JSONObject jsonObject = new JSONObject(respondData);
                         Log.d("Register", "onResponse: ");
-                        if (jsonObject.getInt("code") == 0) {
+                        if (jsonObject.getInt("code") == 200) {
                             Log.d("Register", "code: ");
                             handler.sendEmptyMessage(1);
                         } else {
@@ -226,12 +227,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void Register(){
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString("name", user.getName());
-        editor.putString("phone", user.getPhone());
-        editor.putString("email", user.getEmail());
-        editor.apply();
+//        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sp.edit();
+//        editor.putString("name", user.getName());
+//        editor.putString("phone", user.getPhone());
+//        editor.putString("email", user.getEmail());
+//        editor.apply();
         ARouter.getInstance()
                 .build("/login/LoginActivity")
                 .navigation();

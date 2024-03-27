@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/card_photo"
+        app:cardCornerRadius="150dp"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/item_profile_photo"
+            android:src="@drawable/zhu"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/item_name"
+        android:text="二师兄"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toTopOf="@id/card_photo"
+        app:layout_constraintStart_toEndOf="@id/card_photo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_comment"
+        android:layout_margin="10dp"
+        android:textSize="18dp"
+        android:text="我是二师兄，我的大师兄是猴哥，我的三师弟是沙和尚，我的师傅是唐僧"
+        app:layout_constraintTop_toBottomOf="@id/item_name"
+        app:layout_constraintStart_toEndOf="@+id/card_photo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_time"
+        android:text="2024年1月1日"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/item_comment"
+        app:layout_constraintStart_toEndOf="@+id/card_photo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

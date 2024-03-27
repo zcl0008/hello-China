@@ -52,6 +52,7 @@ android {
 dependencies {
 
     implementation project(":moduleBase:libBase")
+    implementation project(":modulePublic:tool")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -39,7 +39,7 @@ public class StartActivity extends AppCompatActivity {
             finish();
         }else {
             ARouter.getInstance()
-                    .build("/introductionpage/EnterPageActivity")
+                    .build("/introductionpage/EnterPageActivity_Spring")
                     .navigation();
             finish();
         }

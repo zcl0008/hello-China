@@ -34,7 +34,7 @@ import okhttp3.Response;
 public class LoginByCodeActivity extends AppCompatActivity implements View.OnClickListener{
 
     private String Server_IP = "http://192.168.0.83:8080";
-    private String Server_Login = "/user/findUserByPhoneAndPwd";
+    private String Server_Login_byCode = "/user/code";
     private User user;
     private String returnCode;
 
@@ -105,7 +105,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
                         user.setName(object.getString("name"));
                         user.setPhone(object.getString("phone"));
                         user.setEmail(object.getString("email"));
-                        user.setPhotoUrl(object.getString("photoUrl"));
+                        //user.setPhotoUrl(object.getString("photoUrl"));
                         Log.d("LoginActivity", "onResponse: yes");
                         handler.sendEmptyMessage(1);
                     }
@@ -126,7 +126,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void GetCode(){
-        OkHttpUtil.sendPostCodeRequest(Server_IP + Server_Login, email.getText().toString(), new Callback() {
+        OkHttpUtil.sendPostCodeRequest(Server_IP + Server_Login_byCode, email.getText().toString(), new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
             }
@@ -137,7 +137,8 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
                 try {
                     JSONObject jsonObject = new JSONObject(respondDate);
                     if (jsonObject.getInt("code") == 0){
-                        returnCode = jsonObject.getString("returnCode");
+                        returnCode = jsonObject.getString("data");
+                        Log.d("LoginByCode", "onResponse: " + returnCode);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -162,9 +163,10 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
 
             }else{
                 if (returnCode.equals(code.getText().toString())){
-                    email_code_format.setVisibility(View.VISIBLE);
+                    Log.d("LoginByCode", "onClick: login");
+                    sendLoginRequire(this,Server_IP + Server_Login_byCode,email.getText().toString());
                 }else {
-                    sendLoginRequire(this,Server_IP + Server_Login,email.getText().toString());
+                    email_code_format.setVisibility(View.VISIBLE);
                 }
             }
         }
