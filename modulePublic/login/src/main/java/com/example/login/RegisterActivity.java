@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private String Server_IP = "http://192.168.0.83:8080/";
     private String Server_Register = "user/createUser";
-    private String Server_Login_byCode = "/user/code";
+    private String Server_Send_Code = "user/code";
     private User user;
     private boolean isHide_eye;
     private boolean isHide_confirm_eye;
@@ -65,9 +65,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private Button register;
     private ImageView eye;
     private ImageView confirm_eye;
-    private SharedPreferences sp;
     private HideReturnsTransformationMethod show;
     private PasswordTransformationMethod hide;
+    private String returnCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -205,11 +205,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 try {
 
                         String respondData = response.body().string();
-                        Log.d("dfgdfgdfgdfgdfgdfgdfgdf", "onResponse: " + respondData);
+                        Log.d("Register", "onResponse: " + respondData);
                         JSONObject jsonObject = new JSONObject(respondData);
-                        Log.d("Register", "onResponse: ");
+                        Log.d("Register", "code: " + jsonObject.getInt("code"));
                         if (jsonObject.getInt("code") == 200) {
-                            Log.d("Register", "code: ");
                             handler.sendEmptyMessage(1);
                         } else {
                             runOnUiThread(new Runnable() {
@@ -225,14 +224,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
     }
+    public void GetCode(){
+        OkHttpUtil.sendPostCodeRequest(Server_IP + Server_Send_Code, email.getText().toString(), new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                String respondDate = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(respondDate);
+                    Log.d("LoginByCode", "onResponse: " + jsonObject.getInt("code"));
+                    if (jsonObject.getInt("code") == 200){
+                        returnCode = jsonObject.getString("data");
+                        Log.d("Register_Button_Code", "onResponse: " + returnCode);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                get_code.setText("已成功发送");
+                            }
+                        });
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
 
     public void Register(){
-//        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sp.edit();
-//        editor.putString("name", user.getName());
-//        editor.putString("phone", user.getPhone());
-//        editor.putString("email", user.getEmail());
-//        editor.apply();
+        Log.d("Register", "Register: okokok");
         ARouter.getInstance()
                 .build("/login/LoginActivity")
                 .navigation();
@@ -279,15 +301,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         }
         if (view.getId() == R.id.get_security_code){
-
+            Log.d("getCodeRes", "onClick: ");
+            GetCode();
         }
         if (view.getId() == R.id.register_button){
             confirm_password.clearFocus();
-            Log.d("Register_Button", "onClick: " + is_phone + is_password + is_confirm_password);
-            if (is_phone && is_email&& is_password && is_confirm_password){
-                Log.d("Register_Button", "Register: ");
+            Log.d("Register_Button", "onClick: " + is_phone + is_password + is_confirm_password + is_email);
+            Log.d("Register_Button_Code", "onClick: " + code.getText().toString().trim());
+            Log.d("Register_Button_Code", "onClick: " + returnCode);
+            Log.d("Register_Button_Code", "onClick: " + (is_phone && is_email && is_password && is_confirm_password && is_code));
+            if (returnCode.equals(code.getText().toString().trim())){
+                is_code = true;
+                Log.d("Register_Button_Code", "onClick: equals" + code.getText());
+            }
+            Log.d("Register_Button", "onClick: " + is_phone + is_password + is_confirm_password + is_email + is_code);
+            if (is_phone && is_email && is_password && is_confirm_password && is_code){
+                Log.d("Register_Button1", "Register: all ture");
                 saveUser();
-                Log.d("Register_Button", "Register: " + Server_IP + Server_Register);
+                Log.d("Register_Button2", "Register: 2" + Server_IP + Server_Register);
                 sandRegisterRequire(this,Server_IP + Server_Register,user);
             }
         }

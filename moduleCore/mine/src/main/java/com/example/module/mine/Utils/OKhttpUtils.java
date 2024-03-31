@@ -17,14 +17,16 @@ import okhttp3.RequestBody;
  */
 
 public class OKhttpUtils {
-    public static void sendUpLoadPhoto(String url, String photoPath, okhttp3.Callback callback){
+    public static void sendUpLoadPhoto(String url, String photoPath, String email,okhttp3.Callback callback){
         File file = new File(photoPath);
+
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("uploadFile","uploadFile",
+                .addFormDataPart("iconFile","uploadFile",
                         RequestBody.create(MediaType.parse("*/*"),file))
+                .addFormDataPart("email",email)
                 .build();
 
         Request request = new Request.Builder()

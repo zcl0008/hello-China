@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void Login(){
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",true);
         editor.putString("name", user.getName());
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 user.setName(object.getString("name"));
                                 user.setPhone(object.getString("phone"));
                                 user.setEmail(object.getString("email"));
-                                user.setPhotoUrl(object.getString("photoUrl"));
+                                //user.setPhotoUrl(object.getString("photoUrl"));
                                 Log.d("LoginActivity", "onResponse: yes");
                                 handler.sendEmptyMessage(1);
                             }

@@ -70,7 +70,7 @@ public class EnterPageActivity_Spring extends AppCompatActivity {
                         .withTransition(R.transition.explode,R.transition.fade)
                         .navigation();
             }
-        }, 4500); // 延迟时间应该是以毫秒为单位，这里表示延迟4秒
+        }, 5000); // 延迟时间应该是以毫秒为单位，这里表示延迟4秒
     }
 
     public void initWidget(){
@@ -86,6 +86,16 @@ public class EnterPageActivity_Spring extends AppCompatActivity {
                 .load(R.drawable.bamboo)
                 .into(gif);
 
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance()
+                        .build("/app/MainActivity")
+                        .withTransition(R.transition.explode,R.transition.fade)
+                        .navigation();
+            }
+        });
+
     }
     public void setAnimation(){
         logo_animatorSet = new AnimatorSet();
@@ -98,8 +108,8 @@ public class EnterPageActivity_Spring extends AppCompatActivity {
         logo_scaleY = ObjectAnimator.ofFloat(logo,"scaleY",0,1);
         logo_alpha = ObjectAnimator.ofFloat(logo,"alpha",0.5f,1f);
         logo_animator1.setDuration(1750);
-        logo_animator2.setDuration(300);
-        logo_animator3.setDuration(300);
+        logo_animator2.setDuration(600);
+        logo_animator3.setDuration(600);
         logo_scaleX.setDuration(1750);
         logo_scaleY.setDuration(1750);
         logo_alpha.setDuration(1500);
@@ -121,13 +131,13 @@ public class EnterPageActivity_Spring extends AppCompatActivity {
         panda_alpha = ObjectAnimator.ofFloat(logo,"alpha",0.5f,1f);
         forest_alpha = ObjectAnimator.ofFloat(logo,"alpha",0.5f,1f);
         bamboo_translation = ObjectAnimator.ofFloat(bamboo__,"translationY",height,bamboo_TranslationY);
-        panda_animator.setDuration(3000);
-        bamboo_forest_animator.setDuration(3000);
-        bamboo_scaleX.setDuration(3500);
-        bamboo_scaleY.setDuration(3500);
-        panda_alpha.setDuration(2000);
-        forest_alpha.setDuration(2000);
-        bamboo_translation.setDuration(3500);
+        panda_animator.setDuration(4000);
+        bamboo_forest_animator.setDuration(4000);
+        bamboo_scaleX.setDuration(4500);
+        bamboo_scaleY.setDuration(4500);
+        panda_alpha.setDuration(3000);
+        forest_alpha.setDuration(3000);
+        bamboo_translation.setDuration(4500);
 
         bamboo_animatorSet.play(panda_animator)
                 .with(bamboo_forest_animator)

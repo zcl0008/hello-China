@@ -26,7 +26,7 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         exit.setOnClickListener(this);
     }
     public void exitAccount(){
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",false);
         editor.putString("name",null);

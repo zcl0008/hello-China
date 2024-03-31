@@ -23,10 +23,12 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.example.module.mine.Activity.CollegeActivity;
 import com.example.module.mine.Activity.MessageActivity;
 import com.example.module.mine.Activity.PersonalActivity;
 import com.example.module.mine.Activity.SetActivity;
+import com.example.tool.GlideUtil;
 
 @Route(path = "/moduleCore/MineFragment")
 public class MineFragment extends Fragment implements View.OnClickListener,ChangeProfilePhotoListener{
@@ -53,7 +55,7 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
     public void initWidget(){
 //        register = view.findViewById(R.id.register);
 //        change = view.findViewById(R.id.changePassword);
-        fragment = new ChangeProfilePhotoFragment(this);
+        fragment = new ChangeProfilePhotoFragment(this,getContext());
 
         name = view.findViewById(R.id.name);
         profile_photo = view.findViewById(R.id.profile_photo);
@@ -72,10 +74,6 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
         message.setOnClickListener(this);
         personal.setOnClickListener(this);
         set.setOnClickListener(this);
-
-        sp = getContext().getSharedPreferences("Login_State", Context.MODE_PRIVATE);
-        isLogin = sp.getBoolean("isLogin",false);
-        Log.d("Mine", "initWidget:  isLogin " + isLogin);
     }
 
     @Override
@@ -147,12 +145,23 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
     @Override
     public void onResume() {
         super.onResume();
-//        isLogin = sp.getBoolean("isLogin",false);
-//        Log.d("Mine", "onResume: ");
+        getLoginStatus();
     }
 
     @Override
     public void changeProfilePhoto(Bitmap bitmap) {
+        Log.d("MinePhoto", "changeProfilePhoto: yes");
         profile_photo.setImageBitmap(bitmap);
+    }
+    public void getLoginStatus(){
+        sp = getContext().getSharedPreferences("Information", Context.MODE_PRIVATE);
+        isLogin = sp.getBoolean("isLogin",false);
+        if (isLogin){
+            String Name = sp.getString("name",null);
+            String photo_url = sp.getString("photo_url",null);
+            name.setText(Name);
+            GlideUtil.loadImage(getContext(),profile_photo,photo_url);
+        }
+        Log.d("Mine", "initWidget:  isLogin " + isLogin);
     }
 }

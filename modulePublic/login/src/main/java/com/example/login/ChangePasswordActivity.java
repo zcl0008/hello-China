@@ -109,9 +109,8 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
         new_password.setTransformationMethod(hide);
         confirm_password.setTransformationMethod(hide);
 
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         phone = sp.getString("phone",null);
-
         setEditFocus();
     }
 

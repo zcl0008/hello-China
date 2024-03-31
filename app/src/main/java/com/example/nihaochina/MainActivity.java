@@ -151,8 +151,14 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void getLoginState(){
-        sp = getSharedPreferences("LoginState",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         isLogin = sp.getBoolean("LoginState",false);
         Log.d("MainActivity", "getLoginState: " + isLogin);
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        getLoginState();
     }
 }

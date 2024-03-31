@@ -1,6 +1,9 @@
 package com.example.module.shortvideo;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +22,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.dueeeke.videocontroller.StandardVideoController;
 import com.dueeeke.videoplayer.player.IjkVideoView;
 import com.dueeeke.videoplayer.player.VideoViewManager;
+import com.example.module.shortvideo.Entity.Vedio;
+import com.example.module.shortvideo.OkHttpUtils.OkHttpsUtils;
 import com.example.module.shortvideo.Tool.IJKVideoPlayerAdapter;
 import com.example.module.shortvideo.Tool.OnViewPagerListener;
 import com.example.module.shortvideo.Tool.PageLayoutManager;
@@ -26,12 +31,24 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 //import com.example.module.shortvideo.Tool.VideoAdapter;
 //import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 @Route(path = "/module/shortvideo/ShortVideoFragment")
 public class ShortVideoFragment extends Fragment{
-    private List<String> urlList;
+
+    private String Server_IP = "http://192.168.0.83:8080";
+    private String Server_Apply_Video = "";
+    private List<Vedio> vedioList = new ArrayList<>();
     private RecyclerView recyclerView;
     View view;
     View viewRecycle;
@@ -47,9 +64,6 @@ public class ShortVideoFragment extends Fragment{
         view = inflater.inflate(R.layout.shortvideo_gragment,container,false);
 
         //ARouter.getInstance().inject(this);
-
-        initUrl();
-        initPlayer();
 
 
 //        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -73,17 +87,24 @@ public class ShortVideoFragment extends Fragment{
         return view;
     }
 
-    private void initUrl(){
-        urlList = new ArrayList<>();
-        urlList.add("https://v-cdn.zjol.com.cn/277001.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/280443.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/276982.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/276984.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/276985.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/277004.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/277003.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/277002.mp4");
-        urlList.add("https://v-cdn.zjol.com.cn/276996.mp4");
+    private Handler handler = new Handler(Looper.getMainLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            initVedio();
+            initPlayer();
+        }
+    };
+
+    private void initVedio(){
+//        urlList.add("https://v-cdn.zjol.com.cn/277001.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/280443.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/276982.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/276984.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/276985.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/277004.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/277003.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/277002.mp4");
+//        urlList.add("https://v-cdn.zjol.com.cn/276996.mp4");
     }
 
     public void initPlayer(){
@@ -91,7 +112,7 @@ public class ShortVideoFragment extends Fragment{
         //LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         pageLayoutManager = new PageLayoutManager(getContext(), OrientationHelper.VERTICAL);
 
-        adapter = new IJKVideoPlayerAdapter(getContext(),urlList);
+        adapter = new IJKVideoPlayerAdapter(getContext(),vedioList);
         recyclerView.setLayoutManager(pageLayoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -185,5 +206,39 @@ public class ShortVideoFragment extends Fragment{
             ijkVideoView = viewRecycle.findViewById(R.id.ijkVideoPlayer);
             ijkVideoView.resume();
         }
+    }
+    public void ApplyVideo(){
+        OkHttpsUtils.sendApplyVideoRequest(Server_IP + Server_Apply_Video, new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                try {
+                    String respondData = response.body().string();
+                    JSONObject jsonObject = new JSONObject(respondData);
+                    if (jsonObject.getInt("code") == 0){
+                        JSONObject object;
+                        JSONArray array = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < array.length(); i++) {
+                            object = array.getJSONObject(0);
+                            Vedio vedio = new Vedio();
+                            vedio.name = object.getString("name");
+                            vedio.url = object.getString("url");
+                            vedio.intro = object.getString("intro");
+                            vedio.isLike = object.getBoolean("isLike");
+                            vedio.isCollect = object.getBoolean("isCollect");
+
+                        }
+                        Log.d("LoginActivity", "onResponse: yes");
+                        //handler.sendEmptyMessage(1);
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }

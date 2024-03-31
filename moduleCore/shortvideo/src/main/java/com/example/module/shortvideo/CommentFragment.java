@@ -1,6 +1,7 @@
 package com.example.module.shortvideo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,8 @@ import java.util.List;
 
 public class CommentFragment extends BottomSheetDialogFragment implements View.OnClickListener {
 
-    View view;
+    View bottomSheet_view;
+    BottomSheetBehavior behavior;
     ImageView screen_state;
     ImageView cancel;
     TextView commit_num;
@@ -46,21 +48,31 @@ public class CommentFragment extends BottomSheetDialogFragment implements View.O
 
     boolean isFill;
 
-    @Nullable
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        //view = View.inflate(getContext(),R.layout.comment_area_fragment,null);
+//        initWidget();
+//        return view;
+//    }
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = View.inflate(getContext(),R.layout.comment_area_fragment,null);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bottomSheet_view  = view.findViewById(R.id.bottom_sheet_behavior);
+        behavior = BottomSheetBehavior.from(bottomSheet_view);
         initWidget();
-        return view;
+        behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     public void initWidget(){
-        screen_state = view.findViewById(R.id.screen_state);
-        cancel = view.findViewById(R.id.cancel);
-        commit_num = view.findViewById(R.id.comment_num);
-        recyclerView = view.findViewById(R.id.comment_area);
-        editText = view.findViewById(R.id.comment);
-        send = view.findViewById(R.id.send);
+        screen_state = bottomSheet_view.findViewById(R.id.screen_state);
+        cancel = bottomSheet_view.findViewById(R.id.cancel);
+        commit_num = bottomSheet_view.findViewById(R.id.comment_num);
+        recyclerView = bottomSheet_view.findViewById(R.id.comment_area);
+        editText = bottomSheet_view.findViewById(R.id.comment);
+        send = bottomSheet_view.findViewById(R.id.send);
 
         screen_state.setOnClickListener(this);
         cancel.setOnClickListener(this);
@@ -78,14 +90,18 @@ public class CommentFragment extends BottomSheetDialogFragment implements View.O
         if (view.getId() == R.id.screen_state){
             if (isFill){
                 screen_state.setImageResource(R.drawable.shortvideo_fill_screen);
+                behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+                Log.d("CommentStatus", "onClick: " + behavior.getState());
                 isFill = false;
             }else {
                 screen_state.setImageResource(R.drawable.shortvideo_shrink);
+                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                Log.d("CommentStatus", "onClick: " + behavior.getState());
                 isFill = true;
             }
         }
         if (view.getId() == R.id.cancel){
-            this.dismiss();
+            behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         }
         if (view.getId() == R.id.send){
 

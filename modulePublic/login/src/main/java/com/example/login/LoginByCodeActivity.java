@@ -78,7 +78,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void Login(){
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",true);
         editor.putString("name", user.getName());

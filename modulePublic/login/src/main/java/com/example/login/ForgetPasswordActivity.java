@@ -169,7 +169,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     }
 
     public void reLogin(){
-        sp = getSharedPreferences("Login_State",MODE_PRIVATE);
+        sp = getSharedPreferences("Information",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",false);
         editor.putString("name", user.getName());
