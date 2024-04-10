@@ -70,11 +70,65 @@
                         android:layout_marginTop="15dp"
                         android:text="新华社"/>
                 </LinearLayout>
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:src="@drawable/first" />
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_zhuanfa_one"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_zhuanfa" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/home_collect_one"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/collect" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_like_one"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_dianzan" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,8 +167,8 @@
                             android:layout_height="19dp"
                             android:src="@drawable/collect"
                             android:layout_marginLeft="160dp"/>
-
                     </LinearLayout>
+
 
                 </LinearLayout>
                 <ImageView
@@ -122,6 +176,59 @@
                     android:layout_height="80dp"
                     android:src="@drawable/second" />
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_zhuanfa_two"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_zhuanfa" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/home_collect_two"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/collect" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_like_two"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_dianzan" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -157,6 +264,59 @@
                     android:layout_height="80dp"
                     android:src="@drawable/third" />
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_zhuanfa_three"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_zhuanfa" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/home_collect_three"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/collect" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_like_three"
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:src="@drawable/home_dianzan" />
+
+
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -206,6 +366,52 @@
                 android:layout_height="60dp"
                 android:src="@drawable/new_first" />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_zhuanfa_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_zhuanfa" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/home_collect_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/collect" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_like_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_dianzan" />
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
@@ -237,6 +443,52 @@
                 android:layout_height="60dp"
                 android:src="@drawable/new_two" />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_zhuanfa_six"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_zhuanfa" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/home_collect_six"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/collect" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_like_six"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_dianzan" />
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
@@ -268,6 +520,52 @@
                 android:layout_height="60dp"
                 android:src="@drawable/new_three" />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_zhuanfa_seven"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_zhuanfa" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/home_collect_seven"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/collect" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_like_seven"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_dianzan" />
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
@@ -299,6 +597,52 @@
                 android:layout_height="60dp"
                 android:src="@drawable/new_four" />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_zhuanfa_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_zhuanfa" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/home_collect_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/collect" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_like_four"
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:src="@drawable/home_dianzan" />
+            </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

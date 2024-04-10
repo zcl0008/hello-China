@@ -1,5 +1,6 @@
 package com.example.tool;
 
+import com.example.tool.Collect.Article;
 import com.example.tool.Entity.User;
 
 import okhttp3.Callback;
@@ -118,6 +119,7 @@ public class OkHttpUtil {
                 .build();
         client.newCall(request).enqueue(callback);
     }
+
     public static void sendModifyInformation(String url,String name,String phone,String email,okhttp3.Callback callback){
         OkHttpClient client = new OkHttpClient();
 
@@ -133,4 +135,26 @@ public class OkHttpUtil {
                 .build();
         client.newCall(request).enqueue(callback);
     }
+
+    public static void sendArticle(String url, String token, Article article, Callback callback) {
+        OkHttpClient client = new OkHttpClient();
+
+        // 构建请求体，将文章的标题和来源添加到请求中
+        RequestBody requestBody = new FormBody.Builder()
+                .add("title", article.getTitle())
+                .add("source", article.getSource())
+                // 这里将用户的身份验证令牌添加到请求中
+                .add("token", token)
+                .build();
+
+        // 构建请求，设置URL和POST请求方式，同时将请求体添加到请求中
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+
+        // 发送请求并设置回调
+        client.newCall(request).enqueue(callback);
+    }
 }
+

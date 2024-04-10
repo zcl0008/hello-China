@@ -101,12 +101,13 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
             }
         }
         if (view.getId() == R.id.college){
-            if (isLogin){
-                Intent intent = new Intent(getContext(), CollegeActivity.class);
-                startActivity(intent);
-            }else {
-                Toast.makeText(getContext(),"请先登陆账号！",Toast.LENGTH_SHORT).show();
-            }
+            Intent intent = new Intent(getContext(), CollegeActivity.class);
+            startActivity(intent);
+//            if (isLogin){
+//
+//            }else {
+//                Toast.makeText(getContext(),"请先登陆账号！",Toast.LENGTH_SHORT).show();
+//            }
         }
         if (view.getId() == R.id.message){
             if (isLogin){
