@@ -17,8 +17,7 @@ import okhttp3.RequestBody;
  */
 
 public class OKhttpUtils {
-    public static void sendUpLoadPhoto(String url, String photoPath, String email,okhttp3.Callback callback){
-        File file = new File(photoPath);
+    public static void sendUpLoadPhoto(String url,String email,File file,okhttp3.Callback callback){
 
         OkHttpClient client = new OkHttpClient();
 

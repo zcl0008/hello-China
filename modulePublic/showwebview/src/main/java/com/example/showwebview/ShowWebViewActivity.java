@@ -3,7 +3,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -13,7 +12,6 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.module.showwebview.R;
-import com.example.tool.LoadingAnimation;
 
 @Route(path = "/modulePublic/showwebview/ShowWebViewActivity")
 public class ShowWebViewActivity extends AppCompatActivity {

@@ -57,7 +57,7 @@ import okhttp3.Response;
 
 public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implements View.OnClickListener{
 
-    private String Server_IP = "http://192.168.0.83:8080";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_LoadUpPhoto = "/user/icon/url";
     ChangeProfilePhotoListener listener;
     Context context;
@@ -72,6 +72,7 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
     TextView cancel;
     SharedPreferences sp;
     String email;
+    File outputImage;
 
     public ChangeProfilePhotoFragment(ChangeProfilePhotoListener listener,Context context) {
         this.listener = listener;
@@ -102,6 +103,9 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
 //    private Handler handler = new Handler(Looper.getMainLooper()){
 //        @Override
 //        public void handleMessage(@NonNull Message msg) {
+//            super.handleMessage(msg);
+//
+//            Log.d("ChangeProfilePhoto", "onResponse: " + (String)msg.obj );
 //        }
 //    };
 
@@ -130,13 +134,14 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("MinePhoto", "onActivityResult");
+//        Log.d("MinePhoto", "onActivityResult");
         switch (requestCode) {
             case TAKE_PHOTO:
                 if (resultCode == RESULT_OK) {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContext().getContentResolver().openInputStream(photo_uri));
                         listener.changeProfilePhoto(bitmap);
+                        upLoadPhoto(outputImage);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -147,13 +152,14 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
                 if (resultCode == RESULT_OK){
                     //photo.setImageURI(data.getData());//可以直接展示照片
                     //也可以使用如下方法：
-                    Log.d("MinePhoto", "changeProfilePhoto: resultCode OK");
+//                    Log.d("MinePhoto", "changeProfilePhoto: resultCode OK");
                     String realPath = PhotoUtils.getRealPath(getContext(),data);
                     if (realPath != null){
-                        Log.d("MinePhoto", "changeProfilePhoto: yes");
+                        Log.d("ChangeProfile_choose", "changeProfilePhoto: no null!");
                         Bitmap bitmap = BitmapFactory.decodeFile(realPath);
                         listener.changeProfilePhoto(bitmap);
-                        upLoadPhoto(realPath);
+                        File file = new File(realPath);
+                        upLoadPhoto(file);
                     }else {
                         Toast.makeText(getContext(),"failed to get image",Toast.LENGTH_SHORT).show();
                     }
@@ -165,8 +171,9 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
         }
     }
 
-    public void upLoadPhoto(String realPath){
-        OKhttpUtils.sendUpLoadPhoto(Server_IP + Server_LoadUpPhoto, realPath, email, new Callback() {
+    public void upLoadPhoto(File file){
+        Log.d("UpLoadPhoto", "upLoadPhoto: " + Server_IP + Server_LoadUpPhoto);
+        OKhttpUtils.sendUpLoadPhoto(Server_IP + Server_LoadUpPhoto,email,file , new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
 
@@ -177,7 +184,7 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
                 try {
                     String respondData = response.body().string();
                     JSONObject jsonObject = new JSONObject(respondData);
-                    Log.d("ChangeProfilePhoto", "onResponse: " + respondData);
+                    Log.d("ChangeProfilePhoto", "onResponse: in" + respondData);
                     if (jsonObject.getInt("code") == 200){
                         Log.d("ChangeProfilePhoto", "onResponse: " + respondData);
                         String photoUrl = jsonObject.getString("data");
@@ -185,8 +192,7 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
                         editor.putString("photo_url",photoUrl);
                         Log.d("return_url", "onResponse: " + photoUrl);
                         editor.apply();
-                        Log.d("ChangeProfilePhoto", "onResponse: " + photoUrl);
-//                        handler.sendEmptyMessage(1);
+                        //handler.sendMessage(message);
                     }
                     else {
 //                        getActivity().runOnUiThread(new Runnable() {
@@ -213,7 +219,7 @@ public class ChangeProfilePhotoFragment extends BottomSheetDialogFragment implem
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.take_photo){
-            File outputImage = new File(getContext().getExternalCacheDir(),"output_image.jpg");
+            outputImage = new File(getContext().getExternalCacheDir(),"output_image.jpg");
             try {
                 if (outputImage.exists()){
                     outputImage.delete();

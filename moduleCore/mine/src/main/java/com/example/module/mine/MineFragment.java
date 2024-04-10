@@ -44,17 +44,21 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
     LinearLayout set;
     SharedPreferences sp;
     boolean isLogin;
+    String photo_url;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.mine_fragment,container,false);
         initWidget();
+        initProfilePhoto();
         return view;
     }
 
     public void initWidget(){
 //        register = view.findViewById(R.id.register);
 //        change = view.findViewById(R.id.changePassword);
+        sp = getContext().getSharedPreferences("Information", Context.MODE_PRIVATE);
+
         fragment = new ChangeProfilePhotoFragment(this,getContext());
 
         name = view.findViewById(R.id.name);
@@ -150,18 +154,21 @@ public class MineFragment extends Fragment implements View.OnClickListener,Chang
 
     @Override
     public void changeProfilePhoto(Bitmap bitmap) {
-        Log.d("MinePhoto", "changeProfilePhoto: yes");
+        Log.d("MinePhoto", "changeProfile: yes");
         profile_photo.setImageBitmap(bitmap);
     }
     public void getLoginStatus(){
-        sp = getContext().getSharedPreferences("Information", Context.MODE_PRIVATE);
         isLogin = sp.getBoolean("isLogin",false);
         if (isLogin){
             String Name = sp.getString("name",null);
-            String photo_url = sp.getString("photo_url",null);
             name.setText(Name);
-            GlideUtil.loadImage(getContext(),profile_photo,photo_url);
         }
         Log.d("Mine", "initWidget:  isLogin " + isLogin);
+    }
+    public void initProfilePhoto(){
+        photo_url = sp.getString("photo_url",null);
+        photo_url = photo_url;
+        GlideUtil.loadImage(getContext(),profile_photo,photo_url);
+        Log.d("Glide", "getLoginStatus:  GlideProfile");
     }
 }

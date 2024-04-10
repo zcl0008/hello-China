@@ -118,4 +118,19 @@ public class OkHttpUtil {
                 .build();
         client.newCall(request).enqueue(callback);
     }
+    public static void sendModifyInformation(String url,String name,String phone,String email,okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = new FormBody.Builder()
+                .add("name",name)
+                .add("phone",phone)
+                .add("email",email)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
 }

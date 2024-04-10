@@ -7,8 +7,8 @@
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
         android:allowNativeHeapPointerTagging="false"
+        android:windowSoftInputMode="adjustPan"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/Theme.NiHaoChina" />
 

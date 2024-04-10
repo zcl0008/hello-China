@@ -66,9 +66,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="故宫文创"
-                            android:textColor="@color/black"
-                            android:textSize="30dp"
+                            android:text="故 宫 文 创"
+                            android:fontFamily="@font/font"
+                            android:textColor="#283610"
+                            android:textSize="35dp"
                             android:gravity="center"/>
                         <LinearLayout
                             android:layout_width="40dp"
@@ -114,8 +115,9 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="茶韵醇香"
-                            android:textSize="30dp"
+                            android:text="茶 韵 醇 香"
+                            android:fontFamily="@font/font"
+                            android:textSize="35dp"
                             android:gravity="center"/>
                         <LinearLayout
                             android:layout_width="40dp"
@@ -153,7 +155,7 @@
                         android:layout_marginTop="15dp"
                         android:orientation="horizontal">
                         <LinearLayout
-                            android:layout_width="96dp"
+                            android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginLeft="15dp"
                             android:layout_gravity="center"
@@ -162,11 +164,12 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="瓜果飘香"
-                            android:textSize="30dp"
+                            android:text="瓜 果 飘 香"
+                            android:fontFamily="@font/font"
+                            android:textSize="35dp"
                             android:gravity="center"/>
                         <LinearLayout
-                            android:layout_width="96dp"
+                            android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginRight="15dp"
                             android:layout_gravity="center"
@@ -210,9 +213,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="佳酿醇香"
+                            android:text="佳 酿 醇 香"
+                            android:fontFamily="@font/font"
                             android:textColor="#DACAA8"
-                            android:textSize="30dp"
+                            android:textSize="35dp"
                             android:gravity="center"/>
                         <LinearLayout
                             android:layout_width="40dp"

@@ -31,12 +31,24 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/modify_password"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:text="修 改 密 码"
+        android:textColor="#808080"
+        app:layout_constraintTop_toBottomOf="@id/banned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/exit"
         android:layout_marginTop="15dp"
         android:textSize="20dp"
         android:text="退 出 登 陆"
         android:textColor="#808080"
-        app:layout_constraintTop_toBottomOf="@id/banned"
+        app:layout_constraintTop_toBottomOf="@id/modify_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

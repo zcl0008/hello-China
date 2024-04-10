@@ -66,6 +66,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView name;
         TextView comment;
         TextView time;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             photo = itemView.findViewById(R.id.item_profile_photo);

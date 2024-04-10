@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.module.mine.R;
 @Route(path = "/mine/SetActivity")
 public class SetActivity extends AppCompatActivity implements View.OnClickListener{
     Button banned;
     Button exit;
+    Button modify_password;
     SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,11 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
 
         banned = (Button) findViewById(R.id.banned);
         exit = (Button) findViewById(R.id.exit);
+        modify_password = (Button) findViewById(R.id.modify_password);
 
         banned.setOnClickListener(this);
         exit.setOnClickListener(this);
+        modify_password.setOnClickListener(this);
     }
     public void exitAccount(){
         sp = getSharedPreferences("Information",MODE_PRIVATE);
@@ -44,6 +48,11 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         if (view.getId() == R.id.exit){
             exitAccount();
             finish();
+        }
+        if ((view.getId() == R.id.modify_password)){
+            ARouter.getInstance()
+                    .build("/login/ChangePasswordActivity")
+                    .navigation();
         }
     }
 }

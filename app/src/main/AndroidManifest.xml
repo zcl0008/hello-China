@@ -21,7 +21,8 @@
 
         <activity
             android:name=".StartActivity"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
@@ -32,6 +33,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask"
             android:exported="true">
 
