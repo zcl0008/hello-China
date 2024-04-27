@@ -36,7 +36,7 @@ import okhttp3.Response;
 @Route(path = "/login/ChangePasswordActivity")
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String Server_IP = "http://192.168.0.83:8080";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_ChangePassword = "/user/updateNewPassword";
     private EditText old_password;
     private EditText new_password;

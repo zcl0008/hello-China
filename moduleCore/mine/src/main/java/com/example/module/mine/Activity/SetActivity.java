@@ -36,7 +36,7 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         editor.putString("name",null);
         editor.putString("phone",null);
         editor.putString("email",null);
-        editor.putString("photo",null);
+        editor.putString("photo_url",null);
         editor.apply();
     }
 

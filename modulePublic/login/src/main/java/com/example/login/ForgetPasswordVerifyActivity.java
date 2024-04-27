@@ -29,7 +29,7 @@ import okhttp3.Response;
 @Route(path = "/login/FindPasswordVerityActivity")
 public class ForgetPasswordVerifyActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String Server_IP = "169.254.225.195";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_FindPassword = "/user/updatePasswordByPhone";
     private EditText email;
     private EditText code;

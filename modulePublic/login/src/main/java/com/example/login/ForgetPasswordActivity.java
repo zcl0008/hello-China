@@ -40,7 +40,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
     @Autowired(name = "email")
     public String info_email;
 
-    private String Server_IP = "169.254.225.195";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_ModifyPassword = "/user/updatePasswordByPhone";
     private EditText password;
     private EditText confirm_password;

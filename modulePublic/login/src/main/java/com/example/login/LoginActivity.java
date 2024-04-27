@@ -37,7 +37,7 @@ import okhttp3.Response;
 @Route(path = "/login/LoginActivity")
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String Server_IP = "http://192.168.0.83:8080";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_Login = "/user/findUserByPhoneAndPwd";
     private User user;
 

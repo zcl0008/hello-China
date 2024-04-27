@@ -9,51 +9,52 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
-
-    private Context context;
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
     private List<Article> articleList;
 
-    public ArticleAdapter(Context context, List<Article> articleList) {
-        this.context = context;
+    public ArticleAdapter(List<Article> articleList) {
         this.articleList = articleList;
     }
 
     @NonNull
     @Override
-    public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_article, parent, false);
-        return new ArticleViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_article, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Article article = articleList.get(position);
-        holder.title.setText(article.getTitle());
-        holder.source.setText(article.getSource());
+        holder.titleTextView.setText(article.getTitle());
+        holder.sourceTextView.setText(article.getSource());
     }
 
     @Override
     public int getItemCount() {
         return articleList.size();
     }
-
-    public class ArticleViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView title;
-        private TextView source;
-
-        public ArticleViewHolder(@NonNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.title);
-            source = itemView.findViewById(R.id.source);
+    public void setArticleList(List<Article> articleList) {
+        if (articleList != null) {
+            this.articleList = articleList;
+            notifyDataSetChanged();
+        } else {
+            this.articleList = new ArrayList<>(); // 初始化为空列表
+            notifyDataSetChanged();
         }
+    }
 
-        public void bind(Article article) {
-            title.setText(article.getTitle());
-            source.setText(article.getSource());
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView titleTextView;
+        TextView sourceTextView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            titleTextView = itemView.findViewById(R.id.title);
+            sourceTextView = itemView.findViewById(R.id.source);
         }
     }
 }

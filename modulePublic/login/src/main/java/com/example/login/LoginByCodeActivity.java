@@ -33,7 +33,7 @@ import okhttp3.Response;
 @Route(path = "/login/LoginByCodeActivity")
 public class LoginByCodeActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String Server_IP = "http://192.168.0.83:8080";
+    private String Server_IP = "http://192.168.0.101:8080";
     private String Server_Login_byCode = "/user/code";
     private User user;
     private String returnCode;
@@ -155,6 +155,7 @@ public class LoginByCodeActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
+        String userEmail = email.getText().toString();
         if (view.getId() == R.id.get_security_code){
             GetCode();
         }

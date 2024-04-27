@@ -37,9 +37,9 @@ import okhttp3.Response;
 @Route(path = "/login/RegisterActivity")
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private String Server_IP = "http://192.168.0.83:8080/";
-    private String Server_Register = "user/createUser";
-    private String Server_Send_Code = "user/code";
+    private String Server_IP = "http://192.168.0.101:8080";
+    private String Server_Register = "/user/createUser";
+    private String Server_Send_Code = "/user/code";
     private User user;
     private boolean isHide_eye;
     private boolean isHide_confirm_eye;

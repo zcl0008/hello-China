@@ -101,12 +101,18 @@ public class ResourceLibFragment extends Fragment implements View.OnClickListene
         new_one.setOnClickListener(this);
         new_two = view.findViewById(R.id.new_two);
         new_two.setOnClickListener(this);
-
+        new_three= view.findViewById(R.id.new_three);
+        new_three.setOnClickListener(this);
         new_four = view.findViewById(R.id.new_four);
         new_four.setOnClickListener(this);
         new_five = view.findViewById(R.id.new_five);
         new_five.setOnClickListener(this);
-
+        story_one= view.findViewById(R.id.story_one);
+        story_one.setOnClickListener(this);
+        story_two = view.findViewById(R.id.story_two);
+        story_two.setOnClickListener(this);
+        story_three = view.findViewById(R.id.story_three);
+        story_three.setOnClickListener(this);
         story_four = view.findViewById(R.id.story_four);
         story_four.setOnClickListener(this);
         story_five = view.findViewById(R.id.story_five);
@@ -202,9 +208,15 @@ public class ResourceLibFragment extends Fragment implements View.OnClickListene
         }
         if (view.getId() == R.id.new_two){
             ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
-                    .withString("url","https://m.meishij.net/caixi/")
+                    .withString("url","https://www.xiangha.com/")
                     .navigation();
         }
+        if (view.getId() == R.id.new_three){
+            ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
+                    .withString("url","https://www.dpm.org.cn/explore/buildings.html")
+                    .navigation();
+        }
+
 
         if (view.getId() == R.id.new_four){
             ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
@@ -216,7 +228,21 @@ public class ResourceLibFragment extends Fragment implements View.OnClickListene
                     .withString("url","https://www.dpm.org.cn/explore/collections.html")
                     .navigation();
         }
-
+        if (view.getId() == R.id.story_one){
+            ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
+                    .withString("url","https://www.qigushi.com/zgsh/64.html")
+                    .navigation();
+        }
+        if (view.getId() == R.id.story_two){
+            ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
+                    .withString("url","http://www.shenhuagushi.net/houyisheri.html")
+                    .navigation();
+        }
+        if (view.getId() == R.id.story_three){
+            ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
+                    .withString("url","https://www.qigushi.com/zgsh/5.html")
+                    .navigation();
+        }
         if (view.getId() == R.id.story_four){
             ARouter.getInstance().build("/modulePublic/showwebview/ShowWebViewActivity")
                     .withString("url","https://so.gushiwen.cn/shiwenv_1104052ed0fc.aspx")
